@@ -1,12 +1,11 @@
 <?php
-// auteur: Vul hier je naam in
+// auteur: Sumaia Hashimi
 // functie: configuratiebestand
 
-define("DATABASE", "fietsenmaker");
+define("DATABASE", "bieren");
 define("SERVERNAME", "localhost");
 define("USERNAME", "root");
-define("PASSWORD", "");
+define("PASSWORD", "root");
 
-define("CRUD_TABLE", "brouwer");
-
+define("CRUD_TABLE", "bier");
 ?>
