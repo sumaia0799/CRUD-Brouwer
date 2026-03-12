@@ -1,28 +1,23 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crud</title>
+    <title>Crud Bier</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <?php
-    // functie: Programma CRUD fietsen
-    // auteur: Vul hier je naam in   
+<?php
+// functie: Programma CRUD bier
+// auteur: Sumaia Hashimi
 
-    // Initialisatie
-    include 'functions.php';
+include 'functions.php';
 
-    // Main
-
-    // Aanroep functie 
-    crudMain();
-    ?>
+crudMain();
+?>
 
 </body>
 </html>
-
 
 

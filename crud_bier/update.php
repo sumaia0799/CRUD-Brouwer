@@ -1,49 +1,60 @@
 <?php
-    // functie: update fiets
-    // auteur: Vul hier je naam in
+// functie: update bier
+// auteur: Sumaia Hashimi
 
-    require_once('functions.php');
+require_once('functions.php');
 
-    // Test of er op de wijzig-knop is gedrukt 
-    if(isset($_POST['btn_wzg'])){
+$brouwers = getBrouwers();
 
-        // test of update gelukt is
-        if(updateRecord($_POST) == true){
-            echo "<script>alert('Fiets is gewijzigd')</script>";
-        } else {
-            echo '<script>alert("Fiets is NIET gewijzigd")</script>';
-        }
+if(isset($_POST['btn_wzg'])){
+
+    if(updateRecord($_POST) == true){
+        echo "<script>alert('Bier is gewijzigd')</script>";
+        echo "<script> location.replace('index.php'); </script>";
+    } else {
+        echo '<script>alert("Bier is NIET gewijzigd")</script>';
     }
+}
 
-    // Test of id is meegegeven in de URL
-    if(isset($_GET['id'])){  
-        // Haal alle info van de betreffende id $_GET['id']
-        $id = $_GET['id'];
-        $row = getRecord($id);
-    
+if(isset($_GET['id'])){  
+    $id = $_GET['id'];
+    $row = getRecord($id);
 ?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Wijzig Fiets</title>
+  <title>Wijzig Bier</title>
 </head>
 <body>
-  <h2>Wijzig Fiets</h2>
+  <h2>Wijzig Bier</h2>
   <form method="post">
     
-    <input type="hidden" id="merk" name="id" required value="<?php echo $row['id']; ?>"><br>
-    <label for="merk">Merk:</label>
-    <input type="text" id="merk" name="merk" required value="<?php echo $row['merk']; ?>"><br>
+    <input type="hidden" name="biercode" value="<?php echo $row['biercode']; ?>">
 
-    <label for="type">Type:</label>
-    <input type="text" id="type" name="type" required value="<?php echo $row['type']; ?>"><br>
+    <label for="naam">Naam:</label>
+    <input type="text" id="naam" name="naam" required value="<?php echo $row['naam']; ?>"><br>
 
-    <label for="prijs">Prijs:</label>
-    <input type="number" id="prijs" name="prijs" required value="<?php echo $row['prijs']; ?>"><br>
+    <label for="soort">Soort:</label>
+    <input type="text" id="soort" name="soort" required value="<?php echo $row['soort']; ?>"><br>
+
+    <label for="stijl">Stijl:</label>
+    <input type="text" id="stijl" name="stijl" required value="<?php echo $row['stijl']; ?>"><br>
+
+    <label for="alcohol">Alcohol:</label>
+    <input type="text" id="alcohol" name="alcohol" required value="<?php echo $row['alcohol']; ?>"><br>
+
+    <label for="brouwcode">Brouwnaam:</label>
+    <select name="brouwcode" id="brouwcode" required>
+        <?php foreach($brouwers as $brouwer){ ?>
+            <option value="<?php echo $brouwer['brouwcode']; ?>"
+                <?php if($row['brouwcode'] == $brouwer['brouwcode']) echo "selected"; ?>>
+                <?php echo $brouwer['naam']; ?>
+            </option>
+        <?php } ?>
+    </select><br>
 
     <input type="submit" name="btn_wzg" value="Wijzig">
   </form>
@@ -53,7 +64,7 @@
 </html>
 
 <?php
-    } else {
-        echo "Geen id opgegeven<br>";
-    }
+} else {
+    echo "Geen id opgegeven<br>";
+}
 ?>
